@@ -1,8 +1,8 @@
 # ZhyForm
 
-![image-20230816140544023](.\screenshot\ZFormGrid.png)
+![ZFormDialog](https://raw.githubusercontent.com/WineMonk/images/master/blog/post/202308161427913.png)
 
-![image-20230816140659295](.\screenshot\ZFormDialog.png)
+![ZFormGrid](https://raw.githubusercontent.com/WineMonk/images/master/blog/post/202308161427052.png)
 
 ## 目录说明：
 
