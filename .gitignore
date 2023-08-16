@@ -1,0 +1,13 @@
+bin
+obj
+build
+log
+tmp
+cache
+*.dll
+*.csproj.user
+.vs
+.vs/
+Output
+output
+Source/packages/

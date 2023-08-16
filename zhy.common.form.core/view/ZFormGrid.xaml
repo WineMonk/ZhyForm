@@ -1,0 +1,119 @@
+﻿<Window
+    x:Class="zhy.common.form.core.view.ZFormGrid"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:zhy.common.form.core.view"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Width="600"
+    Height="450"
+    WindowStartupLocation="CenterScreen"
+    mc:Ignorable="d">
+    <Window.Resources>
+        <ResourceDictionary Source="pack://application:,,,/zhy.common.form.core;component\AppDictionary.xaml" />
+    </Window.Resources>
+    <Grid Margin="5">
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition Height="auto" />
+        </Grid.RowDefinitions>
+        <DockPanel>
+            <DataGrid
+                x:Name="dataGrid"
+                VerticalContentAlignment="Center"
+                AutoGenerateColumns="False"
+                CanUserAddRows="False"
+                CanUserSortColumns="True"
+                HeadersVisibility="Column"
+                IsReadOnly="True"
+                ItemsSource="{Binding ViewFormItems}"
+                Style="{DynamicResource InfoGrid}">
+                <DataGrid.Columns>
+                    <DataGridTextColumn
+                        Width="auto"
+                        Binding="{Binding Index}"
+                        Header="序 号">
+                        <DataGridTextColumn.ElementStyle>
+                            <Style TargetType="TextBlock">
+                                <Setter Property="Margin" Value="3" />
+                                <Setter Property="VerticalAlignment" Value="Center" />
+                            </Style>
+                        </DataGridTextColumn.ElementStyle>
+                    </DataGridTextColumn>
+                    <DataGridTextColumn
+                        Width="*"
+                        Binding="{Binding Title}"
+                        Header="名 称">
+                        <DataGridTextColumn.ElementStyle>
+                            <Style TargetType="TextBlock">
+                                <Setter Property="Margin" Value="3" />
+                                <Setter Property="VerticalAlignment" Value="Center" />
+                            </Style>
+                        </DataGridTextColumn.ElementStyle>
+                    </DataGridTextColumn>
+                    <DataGridTemplateColumn Width="3*" Header="值">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Vertical">
+                                    <DockPanel Height="26" Visibility="{Binding TextBoxVisibility}">
+                                        <TextBox
+                                            VerticalContentAlignment="Center"
+                                            Background="{Binding}"
+                                            BorderThickness="0"
+                                            Foreground="{Binding}"
+                                            IsReadOnly="{Binding IsReadOnlyTextInput}"
+                                            Text="{Binding ValueText, UpdateSourceTrigger=PropertyChanged}" />
+                                    </DockPanel>
+                                    <DockPanel Height="26" Visibility="{Binding ComboBoxVisibility}">
+                                        <ComboBox
+                                            VerticalContentAlignment="Center"
+                                            Background="{Binding}"
+                                            BorderThickness="0"
+                                            Cursor="Hand"
+                                            DisplayMemberPath="Display"
+                                            IsReadOnly="{Binding IsReadOnlyComboInput}"
+                                            ItemsSource="{Binding ValuesCombo}"
+                                            SelectedItem="{Binding ValueCombo, UpdateSourceTrigger=PropertyChanged}"
+                                            Style="{DynamicResource InfoComboBox}" />
+                                    </DockPanel>
+                                    <DockPanel Height="26" Visibility="{Binding ButtonVisibility}">
+                                        <Button
+                                            Margin="3,0,0,0"
+                                            Command="{Binding CommandButtonClick}"
+                                            Content="{Binding ButtonContent}"
+                                            Cursor="Hand"
+                                            DockPanel.Dock="Right"
+                                            Style="{DynamicResource InfoButton}" />
+                                        <TextBox
+                                            VerticalContentAlignment="Center"
+                                            Background="{Binding}"
+                                            BorderThickness="0"
+                                            Foreground="{Binding}"
+                                            IsReadOnly="{Binding IsReadOnlyButtonInput}"
+                                            Text="{Binding ValueButton, UpdateSourceTrigger=PropertyChanged}" />
+                                    </DockPanel>
+                                </StackPanel>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                </DataGrid.Columns>
+            </DataGrid>
+        </DockPanel>
+        <DockPanel Grid.Row="1" LastChildFill="False">
+            <Button
+                Margin="5"
+                Command="{Binding CommandCancel}"
+                Content="取  消"
+                Cursor="Hand"
+                DockPanel.Dock="Right"
+                Style="{DynamicResource DefaultButton}" />
+            <Button
+                Margin="5"
+                Command="{Binding CommandOK}"
+                Content="确  定"
+                Cursor="Hand"
+                DockPanel.Dock="Right"
+                Style="{DynamicResource InfoButton}" />
+        </DockPanel>
+    </Grid>
+</Window>
