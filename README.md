@@ -1,8 +1,10 @@
 # ZhyForm
 
-![ZFormDialog](https://raw.githubusercontent.com/WineMonk/images/master/blog/post/202308161427913.png)
+**WPF表单组件，表单项支持：简单文本、格式校验文本、多选项、按钮选择项，支持两种界面风格。**
 
-![ZFormGrid](https://raw.githubusercontent.com/WineMonk/images/master/blog/post/202308161427052.png)
+<img src="https://raw.githubusercontent.com/WineMonk/images/master/blog/post/202308161427913.png" alt="ZFormDialog" style="zoom: 80%;" />
+
+<img src="https://raw.githubusercontent.com/WineMonk/images/master/blog/post/202308161427052.png" alt="ZFormGrid" style="zoom:80%;" />
 
 ## 目录说明：
 
@@ -15,3 +17,4 @@
 
 1. 编译源码后，在项目中添加编译生成的zhy.common.form.dll或zhy.common.form.core.dll引用；
 2. 在解决方案中直接引入zhy.common.form.csproj或zhy.common.form.core.csproj项目；
+
