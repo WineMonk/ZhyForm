@@ -1,0 +1,144 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>zhy.common.form.core</name>
+    </assembly>
+    <members>
+        <member name="T:zhy.common.form.core.model.Interf.IZFormItem">
+            <summary>
+            表单项接口
+            </summary>
+        </member>
+        <member name="P:zhy.common.form.core.model.Interf.IZFormItem.Key">
+            <summary>
+            唯一键
+            </summary>
+        </member>
+        <member name="P:zhy.common.form.core.model.Interf.IZFormItem.Title">
+            <summary>
+            标题
+            </summary>
+        </member>
+        <member name="P:zhy.common.form.core.model.Interf.IZFormItem.Data">
+            <summary>
+            数据
+            </summary>
+        </member>
+        <member name="P:zhy.common.form.core.model.Interf.IZFormItem.IsReadOnly">
+            <summary>
+            是否只读
+            </summary>
+        </member>
+        <member name="P:zhy.common.form.core.model.Interf.IZFormItem.IsRequired">
+            <summary>
+            是否必须
+            </summary>
+        </member>
+        <member name="T:zhy.common.form.core.model.ZButtonFormItem">
+            <summary>
+            按钮表单项
+            </summary>
+        </member>
+        <member name="P:zhy.common.form.core.model.ZButtonFormItem.ButtonCommand">
+            <summary>
+            选择按钮方法
+            </summary>
+        </member>
+        <member name="P:zhy.common.form.core.model.ZButtonFormItem.Value">
+            <summary>
+            初始值
+            </summary>
+        </member>
+        <member name="P:zhy.common.form.core.model.ZButtonFormItem.ButtonContent">
+            <summary>
+            按钮内容
+            </summary>
+        </member>
+        <member name="T:zhy.common.form.core.model.ZComboFormItem">
+            <summary>
+            多选表单项
+            </summary>
+        </member>
+        <member name="F:zhy.common.form.core.model.ZComboFormItem._values">
+            <summary>
+            选项集
+            </summary>
+        </member>
+        <member name="T:zhy.common.form.core.model.ZComboItem">
+            <summary>
+            选项
+            </summary>
+        </member>
+        <member name="T:zhy.common.form.core.model.ZFormatTextFormItem">
+            <summary>
+            校验格式表单项
+            </summary>
+        </member>
+        <member name="P:zhy.common.form.core.model.ZFormatTextFormItem.ErrMessage">
+            <summary>
+            格式提示
+            </summary>
+        </member>
+        <member name="P:zhy.common.form.core.model.ZFormatTextFormItem.FormatVerification">
+            <summary>
+            格式校验方法
+            </summary>
+        </member>
+        <member name="T:zhy.common.form.core.model.ZFormItemBase">
+            <summary>
+            表单项基类
+            </summary>
+        </member>
+        <member name="T:zhy.common.form.core.model.ZFormResultItem">
+            <summary>
+            表单结果项
+            </summary>
+        </member>
+        <member name="T:zhy.common.form.core.model.ZTextFormItem">
+            <summary>
+            输入表单项
+            </summary>
+        </member>
+        <member name="P:zhy.common.form.core.model.ZTextFormItem.Value">
+            <summary>
+            初始值
+            </summary>
+        </member>
+        <member name="T:zhy.common.form.core.view.model.ZViewFormItem">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:zhy.common.form.core.view.viewmodel.ZFormViewModel">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:zhy.common.form.core.view.ZFormDialog">
+            <summary>
+            ZFormWindow.xaml 的交互逻辑
+            </summary>
+            <summary>
+            ZFormDialog
+            </summary>
+        </member>
+        <member name="M:zhy.common.form.core.view.ZFormDialog.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:zhy.common.form.core.view.ZFormGrid">
+            <summary>
+            ZFormDialog.xaml 的交互逻辑
+            </summary>
+            <summary>
+            ZFormGrid
+            </summary>
+        </member>
+        <member name="M:zhy.common.form.core.view.ZFormGrid.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+    </members>
+</doc>
