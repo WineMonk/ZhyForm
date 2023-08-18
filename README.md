@@ -19,7 +19,7 @@ ZFormGrid
 
 ## 项目引用：
 
-1. 编译源码后，在项目中添加编译生成的zhy.common.form.dll或zhy.common.form.core.dll引用；
+1. 编译源码后，在项目中添加编译生成的zhy.common.form.dll或zhy.common.form.core.dll引用；[Dll文件](./dll)
 2. 在解决方案中直接引入zhy.common.form.csproj或zhy.common.form.core.csproj项目；
 
 ## 代码示例：
