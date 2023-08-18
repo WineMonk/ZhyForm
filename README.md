@@ -4,11 +4,11 @@
 
 ZFormDialog
 
-<img src="https://raw.githubusercontent.com/WineMonk/images/master/blog/post/202308161427913.png" alt="ZFormDialog" style="zoom: 80%;" />
+<img src="https://raw.githubusercontent.com/WineMonk/images/master/blog/post/202308161427913.png" alt="ZFormDialog" style="zoom: 67%;" />
 
 ZFormGrid
 
-<img src="https://raw.githubusercontent.com/WineMonk/images/master/blog/post/202308161427052.png" alt="ZFormGrid" style="zoom:80%;" />
+<img src="https://raw.githubusercontent.com/WineMonk/images/master/blog/post/202308161427052.png" alt="ZFormGrid" style="zoom: 67%;" />
 
 ## 目录说明：
 
