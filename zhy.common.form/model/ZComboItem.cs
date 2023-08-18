@@ -33,5 +33,17 @@ namespace zhy.common.form.model
             get { return _value; }
             set { _value = value; }
         }
+        public ZComboItem() { }
+
+        public ZComboItem(string display, object value)
+        {
+            _display = display;
+            _value = value;
+        }
+
+        public ZComboItem(string display)
+        {
+            _display = display;
+        }
     }
 }
