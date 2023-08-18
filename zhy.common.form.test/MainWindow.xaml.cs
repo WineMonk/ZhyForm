@@ -78,6 +78,7 @@ namespace zhy.common.form.test
 
             ZFormatTextFormItem zFormatTextFormItem = new ZFormatTextFormItem();
             zFormatTextFormItem.Title = "格式验证项";
+            zFormatTextFormItem.Value = "格式验证值";
             zFormatTextFormItem.IsRequired = true;
             zFormatTextFormItem.ErrMessage = "输入必须位数字！";
             zFormatTextFormItem.FormatVerification = (currentVal) =>
