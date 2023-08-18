@@ -28,5 +28,6 @@ namespace zhy.common.form.core.model
             this.FormItem = zFormItem;
             this.Value = value;
         }
+        private ZFormResultItem() { }
     }
 }

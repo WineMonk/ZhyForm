@@ -31,45 +31,39 @@ namespace zhy.common.form.test
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            List<IZFormItem> zFormItems = new List<IZFormItem>
-            {
-                new ZTextFormItem()
+            ZTextFormItem zTextFormItem = new ZTextFormItem();
+            zTextFormItem.Title = "输入项";
+            zTextFormItem.Value = "输入值";
+            zTextFormItem.IsRequired = true;
+
+            ZComboFormItem zComboFormItem = new ZComboFormItem();
+            zComboFormItem.Title = "多选项";
+            zComboFormItem.Values = 
+                new List<ZComboItem>
                 {
-                    Title = "输入项",
-                    Value = "输入值" ,
-                    IsRequired = true
-                },
-                new ZComboFormItem()
-                {
-                    Title = "多选项",
-                    Values = new List<ZComboItem>
+                    new ZComboItem()
                     {
-                        new ZComboItem()
-                        {
-                            Display = "项1",
-                            Value="值1"
-                        },
-                        new ZComboItem()
-                        {
-                            Display = "项2",
-                            Value="值2"
-                        },
-                        new ZComboItem()
-                        {
-                            Display = "项3",
-                            Value="值3"
-                        }
+                        Display = "项1",
+                        Value="值1"
+                    },
+                    new ZComboItem()
+                    {
+                        Display = "项2",
+                        Value="值2"
+                    },
+                    new ZComboItem()
+                    {
+                        Display = "项3",
+                        Value="值3"
                     }
-                },
-            };
-            ZButtonFormItem button = new ZButtonFormItem
-            {
-                Title = "选择项",
-                ButtonContent = "参数选择",
-                Value = "选择值",
-                IsReadOnly = true
-            };
-            button.ButtonCommand = (val) =>
+                };
+
+            ZButtonFormItem zButtonFormItem = new ZButtonFormItem();
+            zButtonFormItem.Title = "选择项";
+            zButtonFormItem.ButtonContent = "参数选择";
+            zButtonFormItem.Value = "选择值";
+            zButtonFormItem.IsReadOnly = true;
+            zButtonFormItem.ButtonCommand = (currentVal) =>
             {
                 FolderBrowserDialog folderBrowserDialog = new FolderBrowserDialog();
                 if (folderBrowserDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
@@ -79,33 +73,41 @@ namespace zhy.common.form.test
                         selectedPath += Path.DirectorySeparatorChar;
                     return selectedPath;
                 }
-                return val;
+                return currentVal;
             };
-            ZFormatTextFormItem zFormatTextFormItem = new ZFormatTextFormItem
-            {
-                Title = "格式验证项",
-                IsRequired = true,
-                ErrMessage = "输入必须位数字！"
-            };
-            zFormatTextFormItem.FormatVerification = (val) =>
+
+            ZFormatTextFormItem zFormatTextFormItem = new ZFormatTextFormItem();
+            zFormatTextFormItem.Title = "格式验证项";
+            zFormatTextFormItem.IsRequired = true;
+            zFormatTextFormItem.ErrMessage = "输入必须位数字！";
+            zFormatTextFormItem.FormatVerification = (currentVal) =>
             {
                 try
                 {
-                    int v = int.Parse(val);
+                    int v = int.Parse(currentVal);
                     return true;
                 }
                 catch { return false; }
             };
-            zFormItems.Add(button);
+
+            List<IZFormItem> zFormItems = new List<IZFormItem>();
+            zFormItems.Add(zTextFormItem);
             zFormItems.Add(zFormatTextFormItem);
+            zFormItems.Add(zComboFormItem);
+            zFormItems.Add(zButtonFormItem);
+
             ZFormGrid zFormGrid = new ZFormGrid(zFormItems);
             zFormGrid.Title = "测试";
-            zFormGrid.Show();
-            
+            bool dr = (bool)zFormGrid.ShowDialog(); ;
+            if (dr)
+            {
+                List<ZFormResultItem> resultItems = zFormGrid.ResultItems;
+            }
+
             ZFormDialog zFormDialog = new ZFormDialog(zFormItems);
             zFormDialog.Title = "测试";
-            bool dr = (bool)zFormDialog.ShowDialog();
-            if (dr)
+            bool dr1 = (bool)zFormDialog.ShowDialog();
+            if (dr1)
             {
                 List<ZFormResultItem> resultItems = zFormDialog.ResultItems;
             }
