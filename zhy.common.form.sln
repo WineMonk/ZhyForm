@@ -11,6 +11,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "zhy.common.form.core", "zhy
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "zhy.common.form.core.text", "zhy.common.form.core.text\zhy.common.form.core.text.csproj", "{62B5E1C0-608E-48C8-9276-48838C678FDD}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "zhy.common.datagrid.core", "zhy.common.datagrid.core\zhy.common.datagrid.core.csproj", "{48380006-767F-47DA-BFEE-A8939A5E4F36}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "zhy.common.datagrid.core.text", "zhy.common.datagrid.core.text\zhy.common.datagrid.core.text.csproj", "{8F59D963-8B62-457B-83DA-7E4B61BE8FAB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +37,14 @@ Global
 		{62B5E1C0-608E-48C8-9276-48838C678FDD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{62B5E1C0-608E-48C8-9276-48838C678FDD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{62B5E1C0-608E-48C8-9276-48838C678FDD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{48380006-767F-47DA-BFEE-A8939A5E4F36}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{48380006-767F-47DA-BFEE-A8939A5E4F36}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{48380006-767F-47DA-BFEE-A8939A5E4F36}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{48380006-767F-47DA-BFEE-A8939A5E4F36}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8F59D963-8B62-457B-83DA-7E4B61BE8FAB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8F59D963-8B62-457B-83DA-7E4B61BE8FAB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8F59D963-8B62-457B-83DA-7E4B61BE8FAB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8F59D963-8B62-457B-83DA-7E4B61BE8FAB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
