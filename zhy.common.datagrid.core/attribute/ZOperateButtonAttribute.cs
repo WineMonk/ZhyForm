@@ -26,7 +26,14 @@ namespace zhy.common.datagrid.core.attribute
         internal int Index { get; set; }
         internal string Content { get; set; }
         internal ButtonStyle ButtonStyle { get; set; }
-        internal ZOperateButtonAttribute(string content, int index = -1, ButtonStyle buttonStyle = ButtonStyle.DefaultButton)
+        /// <summary>
+        /// 操作按钮基类
+        /// </summary>
+        /// <param name="content">按钮内容</param>
+        /// <param name="index">按钮索引</param>
+        /// <param name="buttonStyle">按钮样式</param>
+        internal ZOperateButtonAttribute(string content, int index = -1,
+            ButtonStyle buttonStyle = ButtonStyle.DefaultButton)
         {
             Content = content;
             ButtonStyle = buttonStyle;
@@ -36,6 +43,12 @@ namespace zhy.common.datagrid.core.attribute
     [AttributeUsage(AttributeTargets.Property)]
     public class ZOperateColumnButtonAttribute : ZOperateButtonAttribute
     {
+        /// <summary>
+        /// 操作列按钮类
+        /// </summary>
+        /// <param name="content">按钮内容</param>
+        /// <param name="index">按钮索引</param>
+        /// <param name="buttonStyle">按钮样式</param>
         public ZOperateColumnButtonAttribute(string content, int index = -1,
             ButtonStyle buttonStyle = ButtonStyle.DefaultButton) :base(content, index, buttonStyle)
         {
@@ -44,6 +57,12 @@ namespace zhy.common.datagrid.core.attribute
     [AttributeUsage(AttributeTargets.Method)]
     public class ZOperateTopButtonAttribute : ZOperateButtonAttribute
     {
+        /// <summary>
+        /// 顶部控制按钮类
+        /// </summary>
+        /// <param name="content"></param>
+        /// <param name="index"></param>
+        /// <param name="buttonStyle"></param>
         public ZOperateTopButtonAttribute(string content, int index = -1,
             ButtonStyle buttonStyle = ButtonStyle.DefaultButton) : base(content, index, buttonStyle)
         {

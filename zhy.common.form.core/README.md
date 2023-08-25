@@ -1,5 +1,13 @@
 # ZhyForm
 
+ZFormDialog：表单窗体，对话框样式，表单项支持：简单文本、格式校验文本、多选项、按钮选择项；
+
+![ZFormDialog](https://raw.githubusercontent.com/WineMonk/images/master/blog/post/202308180906372.png)
+
+ZFormGrid：表单窗体，数据表样式，表单项支持：简单文本、格式校验文本、多选项、按钮选择项；
+
+![ZFormGrid](https://raw.githubusercontent.com/WineMonk/images/master/blog/post/202308180906782.png)
+
 ## 示例
 
 ```csharp

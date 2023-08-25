@@ -4,33 +4,7 @@ ZDataGrid：WPF台账用户控件，支持CheckBox、ListBox、TextBox样式信�
 
 ![ZDataGrid](https://raw.githubusercontent.com/WineMonk/images/master/blog/post/202308251459220.png)
 
-ZFormDialog：表单窗体，对话框样式，表单项支持：简单文本、格式校验文本、多选项、按钮选择项；
-
-![ZFormDialog](https://raw.githubusercontent.com/WineMonk/images/master/blog/post/202308180906372.png)
-
-ZFormGrid：表单窗体，数据表样式，表单项支持：简单文本、格式校验文本、多选项、按钮选择项；
-
-![ZFormGrid](https://raw.githubusercontent.com/WineMonk/images/master/blog/post/202308180906782.png)
-
-
-
-## 目录说明：
-
-* zhy.common.form：基于.Net Framework 4.8框架。
-* zhy.common.form.test：zhy.common.form的测试Demo。
-* zhy.common.form.core：基于.Net 6.0框架。
-* zhy.common.form.core.test：zhy.common.form.core的测试Demo。
-* zhy.common.datagrid.core：基于.Net 6.0框架。
-* zhy.common.datagrid.core.test：zhy.common.datagrid.core的测试Demo。
-
-## 项目引用：
-
-1. 编译源码后，在项目中添加编译生成的.dll引用；[Dll文件](./dll)
-2. 在解决方案中直接引入.csproj项目；
-
-## 代码示例：
-
-### ZDataGrid
+## 示例
 
 Xaml：
 
@@ -243,96 +217,210 @@ public class TestSearchMemberItem
 
 
 
-### ZFormDialog && ZFormGrid
+## API 参考
+
+### ZDataColumnAttribute类
+
+#### 定义
 
 ```csharp
-//简单输入项
-ZTextFormItem zTextFormItem = new ZTextFormItem();
-zTextFormItem.Title = "输入项";
-zTextFormItem.Value = "输入值";
-zTextFormItem.IsRequired = true;
-//格式验证输入项
-ZFormatTextFormItem zFormatTextFormItem = new ZFormatTextFormItem();
-zFormatTextFormItem.Title = "格式验证项";
-zFormatTextFormItem.IsRequired = true;
-zFormatTextFormItem.ErrMessage = "输入必须位数字！";
-zFormatTextFormItem.FormatVerification = (currentVal) =>
-{
-    try
-    {
-        int v = int.Parse(currentVal);
-        return true;
-    }
-    catch { return false; }
-};
-//多项选择项
-ZComboFormItem zComboFormItem = new ZComboFormItem();
-zComboFormItem.Title = "多选项";
-zComboFormItem.Values = 
-    new List<ZComboItem>
-{
-    new ZComboItem()
-    {
-        Display = "项1",
-        Value="值1"
-    },
-    new ZComboItem()
-    {
-        Display = "项2",
-        Value="值2"
-    },
-    new ZComboItem()
-    {
-        Display = "项3",
-        Value="值3"
-    }
-};
-//按钮选择项
-ZButtonFormItem zButtonFormItem = new ZButtonFormItem();
-zButtonFormItem.Title = "选择项";
-zButtonFormItem.ButtonContent = "参数选择";
-zButtonFormItem.Value = "选择值";
-zButtonFormItem.IsReadOnly = true;
-zButtonFormItem.ButtonCommand = (currentVal) =>
-{
-    FolderBrowserDialog folderBrowserDialog = new FolderBrowserDialog();
-    if (folderBrowserDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
-    {
-        string selectedPath = folderBrowserDialog.SelectedPath;
-        if (selectedPath.Last() != Path.DirectorySeparatorChar)
-            selectedPath += Path.DirectorySeparatorChar;
-        return selectedPath;
-    }
-    return currentVal;
-};
-
-List<IZFormItem> zFormItems = new List<IZFormItem>();
-zFormItems.Add(zTextFormItem);
-zFormItems.Add(zFormatTextFormItem);
-zFormItems.Add(zComboFormItem);
-zFormItems.Add(zButtonFormItem);
-
-ZFormGrid zFormGrid = new ZFormGrid(zFormItems);
-zFormGrid.Title = "测试";
-bool dr = (bool)zFormGrid.ShowDialog(); ;
-if (dr)
-{
-    List<ZFormResultItem> resultItems = zFormGrid.ResultItems;
-}
-
-ZFormDialog zFormDialog = new ZFormDialog(zFormItems);
-zFormDialog.Title = "测试";
-bool dr1 = (bool)zFormDialog.ShowDialog();
-if (dr1)
-{
-    List<ZFormResultItem> resultItems = zFormDialog.ResultItems;
-}
+[AttributeUsage(AttributeTargets.Property)]
+public class ZDataColumnAttribute: Attribute
 ```
 
-## API参考
+#### 注解
 
-[zhy.common.datagrid.core API参考](./zhy.common.datagrid.core)
+数据列特性基类。
 
-[zhy.common.form API参考](./zhy.common.form)
+#### 属性
 
-[zhy.common.form.core API参考](./zhy.common.form.core)
+| 属性                   | 说明           |
+| ---------------------- | -------------- |
+| Index                  | 列索引。       |
+| Header                 | 列标题。       |
+| Width                  | 列宽。         |
+| DataGridLengthUnitType | 列宽属性。     |
+| IsReadOnly             | 是否为只读。   |
+| IsSearchProperty       | 是包含在查询。 |
+
+
+
+### ZTextDataColumnAttribute类
+
+#### 定义
+
+```csharp
+[AttributeUsage(AttributeTargets.Property)]
+public class ZTextDataColumnAttribute : ZDataColumnAttribute
+```
+
+继承 → [Object](https://learn.microsoft.com/zh-cn/dotnet/api/system.object?view=net-6.0) → Attribute → ZDataColumnAttribute → ZTextDataColumnAttribute
+
+#### 注解
+
+文本输入数据列。
+
+#### 属性
+
+| 属性                   | 说明                                         |
+| ---------------------- | -------------------------------------------- |
+| Index                  | 列索引。（继承自ZDataColumnAttribute）       |
+| Header                 | 列标题。（继承自ZDataColumnAttribute）       |
+| Width                  | 列宽。（继承自ZDataColumnAttribute）         |
+| DataGridLengthUnitType | 列宽属性。（继承自ZDataColumnAttribute）     |
+| IsReadOnly             | 是否为只读。（继承自ZDataColumnAttribute）   |
+| IsSearchProperty       | 是包含在查询。（继承自ZDataColumnAttribute） |
+
+
+
+### ZCheckDataColumnAttribute类
+
+#### 定义
+
+```csharp
+[AttributeUsage(AttributeTargets.Property)]
+public class ZCheckDataColumnAttribute : ZDataColumnAttribute
+```
+
+#### 注解
+
+勾选数据列。
+
+#### 属性
+
+| 属性                   | 说明                                         |
+| ---------------------- | -------------------------------------------- |
+| Index                  | 列索引。（继承自ZDataColumnAttribute）       |
+| Header                 | 列标题。（继承自ZDataColumnAttribute）       |
+| Width                  | 列宽。（继承自ZDataColumnAttribute）         |
+| DataGridLengthUnitType | 列宽属性。（继承自ZDataColumnAttribute）     |
+| IsReadOnly             | 是否为只读。（继承自ZDataColumnAttribute）   |
+| IsSearchProperty       | 是包含在查询。（继承自ZDataColumnAttribute） |
+
+
+
+### ZComboDataColumnAttribute类
+
+#### 定义
+
+```csharp
+[AttributeUsage(AttributeTargets.Property)]
+public class ZComboDataColumnAttribute : ZDataColumnAttribute
+```
+
+#### 注解
+
+选项数据列。
+
+#### 属性
+
+| 属性                   | 说明                                         |
+| ---------------------- | -------------------------------------------- |
+| DisplayMemberPath      | 选择项显示成员路径。                         |
+| TargetProperty         | 选择项绑定目标属性。                         |
+| Index                  | 列索引。（继承自ZDataColumnAttribute）       |
+| Header                 | 列标题。（继承自ZDataColumnAttribute）       |
+| Width                  | 列宽。（继承自ZDataColumnAttribute）         |
+| DataGridLengthUnitType | 列宽属性。（继承自ZDataColumnAttribute）     |
+| IsReadOnly             | 是否为只读。（继承自ZDataColumnAttribute）   |
+| IsSearchProperty       | 是包含在查询。（继承自ZDataColumnAttribute） |
+
+
+
+### ZButtonDataColumnAttribute类
+
+#### 定义
+
+```csharp
+[AttributeUsage(AttributeTargets.Property)]
+public class ZButtonDataColumnAttribute : ZDataColumnAttribute
+```
+
+#### 注解
+
+按钮选择表单项。
+
+#### 属性
+
+| 属性                   | 说明                                         |
+| ---------------------- | -------------------------------------------- |
+| ButtonContent          | 按钮内容。                                   |
+| ButtonStyle            | 按钮样式。                                   |
+| DisplayMemberPath      | 选择项显示成员路径。                         |
+| RealyCommandName       | 接替指令属性名。                             |
+| Index                  | 列索引。（继承自ZDataColumnAttribute）       |
+| Header                 | 列标题。（继承自ZDataColumnAttribute）       |
+| Width                  | 列宽。（继承自ZDataColumnAttribute）         |
+| DataGridLengthUnitType | 列宽属性。（继承自ZDataColumnAttribute）     |
+| IsReadOnly             | 是否为只读。（继承自ZDataColumnAttribute）   |
+| IsSearchProperty       | 是包含在查询。（继承自ZDataColumnAttribute） |
+
+
+
+### ZOperateButtonAttribute类
+
+#### 定义
+
+```csharp
+[AttributeUsage(AttributeTargets.Property)]
+public class ZOperateButtonAttribute : Attribute
+```
+
+#### 注解
+
+操作按钮基类。
+
+#### 属性
+
+| 属性        | 说明       |
+| ----------- | ---------- |
+| ButtonStyle | 按钮样式。 |
+| Content     | 按钮内容。 |
+| Index       | 按钮索引。 |
+
+
+
+### ZOperateColumnButtonAttribute类
+
+#### 定义
+
+```csharp
+[AttributeUsage(AttributeTargets.Property)]
+public class ZOperateColumnButtonAttribute : ZOperateButtonAttribute
+```
+
+#### 注解
+
+操作列按钮类。
+
+#### 属性
+
+| 属性        | 说明                                        |
+| ----------- | ------------------------------------------- |
+| ButtonStyle | 按钮样式。（继承自ZOperateButtonAttribute） |
+| Content     | 按钮内容。（继承自ZOperateButtonAttribute） |
+| Index       | 按钮索引。（继承自ZOperateButtonAttribute） |
+
+
+
+### ZOperateTopButtonAttribute类
+
+#### 定义
+
+```csharp
+[AttributeUsage(AttributeTargets.Method)]
+public class ZOperateTopButtonAttribute : ZOperateButtonAttribute
+```
+
+#### 注解
+
+顶部控制按钮类。
+
+#### 属性
+
+| 属性        | 说明                                        |
+| ----------- | ------------------------------------------- |
+| ButtonStyle | 按钮样式。（继承自ZOperateButtonAttribute） |
+| Content     | 按钮内容。（继承自ZOperateButtonAttribute） |
+| Index       | 按钮索引。（继承自ZOperateButtonAttribute） |
+

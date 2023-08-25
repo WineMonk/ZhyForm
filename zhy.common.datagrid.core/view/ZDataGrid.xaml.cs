@@ -309,7 +309,7 @@ namespace zhy.common.datagrid.core.view
                     button.SetValue(ContentProperty, zButtonAttribute.ButtonContent);
                     button.SetValue(Button.MarginProperty, new Thickness(1, 2, 2, 1));
                     button.SetValue(Button.StyleProperty, this.FindResource(zButtonAttribute.ButtonStyle.ToString()));
-                    button.SetBinding(Button.CommandProperty, new Binding() { Path = new PropertyPath(zButtonAttribute.RealyCommandName) });
+                    button.SetBinding(Button.CommandProperty, new Binding() { Path = new PropertyPath(zButtonAttribute.RelayCommandName) });
                     button.SetBinding(Button.CommandParameterProperty, new Binding() { Path = new PropertyPath(".") });
                     cellFactory.AppendChild(button);
 

@@ -116,7 +116,7 @@ namespace zhy.common.datagrid.core.attribute
     [AttributeUsage(AttributeTargets.Property)]
     public class ZButtonDataColumnAttribute : ZDataColumnAttribute
     {
-        public string RealyCommandName { get; set; }
+        public string RelayCommandName { get; set; }
         public string ButtonContent { get; set; }
         public ButtonStyle ButtonStyle { get; set; }
         public string DisplayMemberPath { get; set; }
@@ -125,21 +125,21 @@ namespace zhy.common.datagrid.core.attribute
         /// </summary>
         /// <param name="header">列标题</param>
         /// <param name="buttonContent">按钮内容</param>
-        /// <param name="relayCommandName"></param>
-        /// <param name="index"></param>
-        /// <param name="displayMemberPath"></param>
-        /// <param name="isReadOnly"></param>
-        /// <param name="isSearchProperty"></param>
-        /// <param name="buttonStyle"></param>
-        /// <param name="width"></param>
-        /// <param name="dataGridLengthUnitType"></param>
+        /// <param name="relayCommandName">接替指令属性名</param>
+        /// <param name="index">列索引</param>
+        /// <param name="displayMemberPath">显示成员路径</param>
+        /// <param name="isReadOnly">是否为只读</param>
+        /// <param name="isSearchProperty">是否包含在查询</param>
+        /// <param name="buttonStyle">按钮样式</param>
+        /// <param name="width">列宽</param>
+        /// <param name="dataGridLengthUnitType">列宽单位</param>
         public ZButtonDataColumnAttribute(string header, string buttonContent, string relayCommandName,
             int index = -1, string displayMemberPath = null, bool isReadOnly = false, 
             bool isSearchProperty = false, ButtonStyle buttonStyle = ButtonStyle.DefaultButton, 
             double width = 1, DataGridLengthUnitType dataGridLengthUnitType = DataGridLengthUnitType.Star) :
             base(header, index, isReadOnly, isSearchProperty, width, dataGridLengthUnitType)
         {
-            RealyCommandName = relayCommandName;
+            RelayCommandName = relayCommandName;
             ButtonContent = buttonContent;
             ButtonStyle = buttonStyle;
             DisplayMemberPath = displayMemberPath;
