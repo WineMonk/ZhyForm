@@ -13,6 +13,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using zhy.common.datagrid.core.enumeration;
 
 namespace zhy.common.datagrid.core.attribute
 {
@@ -22,23 +23,29 @@ namespace zhy.common.datagrid.core.attribute
     [AttributeUsage(AttributeTargets.Property)]
     public class ZOperateButtonAttribute : Attribute
     {
-        public string Content { get; set; }
-        public ZOperateButtonAttribute(string content)
+        internal int Index { get; set; }
+        internal string Content { get; set; }
+        internal ButtonStyle ButtonStyle { get; set; }
+        internal ZOperateButtonAttribute(string content, int index = -1, ButtonStyle buttonStyle = ButtonStyle.DefaultButton)
         {
             Content = content;
+            ButtonStyle = buttonStyle;
+            Index = index;
         }
     }
     [AttributeUsage(AttributeTargets.Property)]
     public class ZOperateColumnButtonAttribute : ZOperateButtonAttribute
     {
-        public ZOperateColumnButtonAttribute(string content):base(content)
+        public ZOperateColumnButtonAttribute(string content, int index = -1,
+            ButtonStyle buttonStyle = ButtonStyle.DefaultButton) :base(content, index, buttonStyle)
         {
         }
     }
-    [AttributeUsage(AttributeTargets.Property)]
+    [AttributeUsage(AttributeTargets.Method)]
     public class ZOperateTopButtonAttribute : ZOperateButtonAttribute
     {
-        public ZOperateTopButtonAttribute(string content) : base(content)
+        public ZOperateTopButtonAttribute(string content, int index = -1,
+            ButtonStyle buttonStyle = ButtonStyle.DefaultButton) : base(content, index, buttonStyle)
         {
         }
     }

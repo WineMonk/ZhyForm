@@ -17,7 +17,7 @@ using zhy.common.form.core.model;
 using Microsoft.Win32;
 using zhy.common.form.core.view;
 
-namespace zhy.common.form.core.text
+namespace zhy.common.form.core.test
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml

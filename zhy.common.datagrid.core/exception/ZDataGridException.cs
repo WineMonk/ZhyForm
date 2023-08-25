@@ -1,34 +1,28 @@
 ﻿/****************************************
- * FileName:	ZDataGridDataSource
+ * FileName:	ZDataGridException
  * Creater: 	shaozhy
- * Create Date:	2023/8/24 9:37:56
+ * Create Date:	2023/8/25 11:23:09
  * Version: 	v0.0.1
  * Description:	
  * ======================================
  * Modify: —— Version: —— Date: —— Modifier: —— Content:
  ****************************************/
-using CommunityToolkit.Mvvm.ComponentModel;
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace zhy.common.datagrid.core.model
+namespace zhy.common.datagrid.core.exception
 {
     /// <summary>
     /// 
     /// </summary>
-    public class ZDataGridDataSource : ObservableObject
+    [Serializable]
+    public class ZDataGridException : Exception
     {
-        private IList _items;
-        public IList Items
-        {
-            get { return _items; }
-            set { SetProperty(ref _items, value); }
-        }
-
-
+        public ZDataGridException():base() { }
+        public ZDataGridException(string  message):base(message) { }
+        public ZDataGridException(string message, Exception inner):base(message, inner) { }
     }
 }

@@ -14,10 +14,4 @@
     <PackageReference Include="CommunityToolkit.Mvvm" Version="8.2.1" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="enumeration\" />
-    <Folder Include="view\model\" />
-    <Folder Include="新文件夹\" />
-  </ItemGroup>
-
 </Project>

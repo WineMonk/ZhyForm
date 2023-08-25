@@ -1,6 +1,8 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,7 +17,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using zhy.common.datagrid.core.view;
 
-namespace zhy.common.datagrid.core.text
+namespace zhy.common.datagrid.core.test
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
@@ -25,28 +27,30 @@ namespace zhy.common.datagrid.core.text
         public MainWindow()
         {
             InitializeComponent();
-            List<TestItem> testItems = new List<TestItem>()
-            {
-                new TestItem(){ IsChecked = true, Text = "测试文本1", ComboList = new List<string>(){ "选项1","选项2" }, Combo = "选项1" ,SelectText = "asd"},
-                new TestItem(){ IsChecked = false, Text = "测试文本2", ComboList = new List<string>(){ "选项1","选项2","选项3" }, Combo = "选项2" },
-                new TestItem(){ IsChecked = true, Text = "测试文本3", ComboList = new List<string>(){ "选项1","选项2" }, Combo = "选项1" },
-                new TestItem(){ IsChecked = false, Text = "测试文本4", ComboList = new List<string>(){ "选项1","选项2" }, Combo = "选项2" },
-            };
-            grid.Children.Add(new ZDataGrid(testItems));
-            //this.DataContext = new MainWindowViewModel();
+            this.DataContext = new MainWindowViewModel();
         }
-
-        
     }
     public class MainWindowViewModel:ObservableObject
     {
-        public List<TestItem> PropertyItemsSource = new List<TestItem>()
+        public MainWindowViewModel()
+        {
+            _testItems = new ObservableCollection<TestItem>()
             {
                 new TestItem(){ IsChecked = true, Text = "测试文本1", ComboList = new List<string>(){ "选项1","选项2" }, Combo = "选项1" ,SelectText = "asd"},
                 new TestItem(){ IsChecked = false, Text = "测试文本2", ComboList = new List<string>(){ "选项1","选项2","选项3" }, Combo = "选项2" },
                 new TestItem(){ IsChecked = true, Text = "测试文本3", ComboList = new List<string>(){ "选项1","选项2" }, Combo = "选项1" },
                 new TestItem(){ IsChecked = false, Text = "测试文本4", ComboList = new List<string>(){ "选项1","选项2" }, Combo = "选项2" },
             };
+            TestItem testItem = new TestItem() { IsChecked = false, Text = "测试文本4", SelectMember = new TestSearchMemberItem("小度", 55), ComboList = new List<string>() { "选项1", "选项2" }, Combo = "选项2", Members = new List<TestSearchMemberItem> { new TestSearchMemberItem("小微", 11), new TestSearchMemberItem("小谷", 22) } };
+            testItem.Member = testItem.Members[1];
+            _testItems.Add(testItem);
+        }
 
+        private IList _testItems;
+        public IList TestItems
+        {
+            get { return _testItems; }
+            set { _testItems = value; }
+        }
     }
 }

@@ -6,7 +6,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
 
-namespace zhy.common.datagrid.core.text
+namespace zhy.common.form.core.test
 {
     /// <summary>
     /// Interaction logic for App.xaml

@@ -9,11 +9,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "zhy.common.form.test", "zhy
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "zhy.common.form.core", "zhy.common.form.core\zhy.common.form.core.csproj", "{09FB4DEB-6555-45CE-8712-CDD4B0D35BB9}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "zhy.common.form.core.text", "zhy.common.form.core.text\zhy.common.form.core.text.csproj", "{62B5E1C0-608E-48C8-9276-48838C678FDD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "zhy.common.form.core.test", "zhy.common.form.core.test\zhy.common.form.core.test.csproj", "{62B5E1C0-608E-48C8-9276-48838C678FDD}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "zhy.common.datagrid.core", "zhy.common.datagrid.core\zhy.common.datagrid.core.csproj", "{48380006-767F-47DA-BFEE-A8939A5E4F36}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "zhy.common.datagrid.core.text", "zhy.common.datagrid.core.text\zhy.common.datagrid.core.text.csproj", "{8F59D963-8B62-457B-83DA-7E4B61BE8FAB}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "zhy.common.datagrid.core.test", "zhy.common.datagrid.core.test\zhy.common.datagrid.core.test.csproj", "{8F59D963-8B62-457B-83DA-7E4B61BE8FAB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
