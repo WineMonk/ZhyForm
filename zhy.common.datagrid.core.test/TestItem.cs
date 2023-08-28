@@ -21,6 +21,7 @@ using zhy.common.datagrid.core.attribute;
 using System.Collections.ObjectModel;
 using System.Collections;
 using zhy.common.datagrid.core.enumeration;
+using System.Reflection;
 
 namespace zhy.common.datagrid.core.test
 {
@@ -38,13 +39,22 @@ namespace zhy.common.datagrid.core.test
             set { SetProperty(ref _isChecked, value); }
         }
 
+        private string _onlyReadText;
+        [ZTextDataColumn(header: "只读文本",index:3, isReadOnly: true,
+            width: 1, dataGridLengthUnitType: DataGridLengthUnitType.Auto)]
+        public string OnlyReadText
+        {
+            get { return _onlyReadText; }
+            set{ SetProperty(ref _onlyReadText, value); }
+        }
+
         private string _text;
-        [ZTextDataColumn(header: "文 本",index:3, isReadOnly: true,
+        [ZTextDataColumn(header: "可编辑文本", index: 3, 
             width: 1, dataGridLengthUnitType: DataGridLengthUnitType.Auto)]
         public string Text
         {
             get { return _text; }
-            set{ SetProperty(ref _text, value); }
+            set { SetProperty(ref _text, value); }
         }
 
         private TestSearchMemberItem _member;
@@ -119,8 +129,47 @@ namespace zhy.common.datagrid.core.test
         public void Oper3(object[] paras)
         {
             TestItem testItem = paras[0] as TestItem;
-            MessageBox.Show(testItem.Combo);
-            MessageBox.Show(testItem.Member?.Name);
+            string msg = null;
+            PropertyInfo[] propertyInfos = testItem.GetType().GetProperties();
+            foreach (var propertyInfo in propertyInfos)
+            {
+                ZDataColumnAttribute? zDataColumnAttribute = propertyInfo.GetCustomAttribute<ZDataColumnAttribute>();
+                if (zDataColumnAttribute == null)
+                    continue;
+                if (zDataColumnAttribute is ZComboDataColumnAttribute)
+                {
+                    ZComboDataColumnAttribute zComboDataColumnAttribute = (ZComboDataColumnAttribute)zDataColumnAttribute;
+                    string targetProperty = zComboDataColumnAttribute.TargetProperty;
+                    PropertyInfo? propertyInfo1 = testItem.GetType().GetProperty(targetProperty);
+                    if (string.IsNullOrEmpty(zComboDataColumnAttribute.DisplayMemberPath))
+                        msg += zDataColumnAttribute.Header + ": " + propertyInfo1.GetValue(testItem) + "\r\n";
+                    else
+                    {
+                        object? val = propertyInfo1.GetValue(testItem);
+                        if (val == null) continue;
+                        PropertyInfo? propertyInfo2 = val.GetType().GetProperty(zComboDataColumnAttribute.DisplayMemberPath);
+                        msg += zDataColumnAttribute.Header + ": " + propertyInfo2.GetValue(val) + "\r\n";
+                    }
+                }
+                else if(zDataColumnAttribute is ZButtonDataColumnAttribute)
+                {
+                    ZButtonDataColumnAttribute zButtonDataColumnAttribute = (ZButtonDataColumnAttribute)zDataColumnAttribute;
+                    if (string.IsNullOrEmpty(zButtonDataColumnAttribute.DisplayMemberPath))
+                        msg += zDataColumnAttribute.Header + ": " + propertyInfo.GetValue(testItem) + "\r\n";
+                    else
+                    {
+                        object? val = propertyInfo.GetValue(testItem);
+                        if (val == null) continue;
+                        PropertyInfo? propertyInfo2 = val.GetType().GetProperty(zButtonDataColumnAttribute.DisplayMemberPath);
+                        msg += zDataColumnAttribute.Header + ": " + propertyInfo2.GetValue(val) + "\r\n";
+                    }
+                }
+                else
+                {
+                    msg += zDataColumnAttribute.Header + ": " + propertyInfo.GetValue(testItem) + "\r\n";
+                }
+            }
+            MessageBox.Show(msg, "属性信息", MessageBoxButton.OK, MessageBoxImage.Information);
         }
 
         [ZOperateTopButton(content: "添 加",index:1, buttonStyle: ButtonStyle.InfoButton)]

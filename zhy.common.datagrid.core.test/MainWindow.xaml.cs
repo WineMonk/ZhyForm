@@ -36,10 +36,10 @@ namespace zhy.common.datagrid.core.test
         {
             _testItems = new ObservableCollection<TestItem>()
             {
-                new TestItem(){ IsChecked = true, Text = "测试文本1", ComboList = new List<string>(){ "选项1","选项2" }, Combo = "选项1" ,SelectText = "asd"},
-                new TestItem(){ IsChecked = false, Text = "测试文本2", ComboList = new List<string>(){ "选项1","选项2","选项3" }, Combo = "选项2" },
-                new TestItem(){ IsChecked = true, Text = "测试文本3", ComboList = new List<string>(){ "选项1","选项2" }, Combo = "选项1" },
-                new TestItem(){ IsChecked = false, Text = "测试文本4", ComboList = new List<string>(){ "选项1","选项2" }, Combo = "选项2" },
+                new TestItem(){ IsChecked = true,  OnlyReadText = "测试文本1",Text = "测试文本1", ComboList = new List<string>(){ "选项1","选项2" }, Combo = "选项1" ,SelectText = "asd"},
+                new TestItem(){ IsChecked = false, OnlyReadText = "测试文本2",Text = "测试文本2", ComboList = new List<string>(){ "选项1","选项2","选项3" }, Combo = "选项2" },
+                new TestItem(){ IsChecked = true,  OnlyReadText = "测试文本3",Text = "测试文本3", ComboList = new List<string>(){ "选项1","选项2" }, Combo = "选项1" },
+                new TestItem(){ IsChecked = false, OnlyReadText = "测试文本4",Text = "测试文本4", ComboList = new List<string>(){ "选项1","选项2" }, Combo = "选项2" },
             };
             TestItem testItem = new TestItem() { IsChecked = false, Text = "测试文本4", SelectMember = new TestSearchMemberItem("小度", 55), ComboList = new List<string>() { "选项1", "选项2" }, Combo = "选项2", Members = new List<TestSearchMemberItem> { new TestSearchMemberItem("小微", 11), new TestSearchMemberItem("小谷", 22) } };
             testItem.Member = testItem.Members[1];

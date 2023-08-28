@@ -24,11 +24,11 @@ namespace zhy.common.datagrid.core.attribute
     [AttributeUsage(AttributeTargets.Property)]
     public class ZDataColumnAttribute: Attribute
     {
-        internal int Index { get; set; }
-        internal string Header { get; set; }
-        internal DataGridLength Width { get; set; }
-        internal bool IsReadOnly { get; set; }
-        internal bool IsSearchProperty { get; set; }
+        public int Index { get; internal set; }
+        public string Header { get; internal set; }
+        public DataGridLength Width { get; internal set; }
+        public bool IsReadOnly { get; internal set; }
+        public bool IsSearchProperty { get; internal set; }
         /// <summary>
         /// 数据列
         /// </summary>
@@ -90,8 +90,8 @@ namespace zhy.common.datagrid.core.attribute
     [AttributeUsage(AttributeTargets.Property)]
     public class ZComboDataColumnAttribute : ZDataColumnAttribute
     {
-        public string TargetProperty { get; set; }
-        public string DisplayMemberPath { get; set; }
+        public string TargetProperty { get; internal set; }
+        public string DisplayMemberPath { get; internal set; }
         /// <summary>
         /// 选项数据列
         /// </summary>
@@ -116,10 +116,10 @@ namespace zhy.common.datagrid.core.attribute
     [AttributeUsage(AttributeTargets.Property)]
     public class ZButtonDataColumnAttribute : ZDataColumnAttribute
     {
-        public string RelayCommandName { get; set; }
-        public string ButtonContent { get; set; }
-        public ButtonStyle ButtonStyle { get; set; }
-        public string DisplayMemberPath { get; set; }
+        public string RelayCommandName { get; internal set; }
+        public string ButtonContent { get; internal set; }
+        public ButtonStyle ButtonStyle { get; internal set; }
+        public string DisplayMemberPath { get; internal set; }
         /// <summary>
         /// 
         /// </summary>

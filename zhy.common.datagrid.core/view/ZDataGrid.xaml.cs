@@ -217,23 +217,50 @@ namespace zhy.common.datagrid.core.view
                 if (attribute is ZTextDataColumnAttribute)
                 {
                     ZTextDataColumnAttribute zTextAttribute = (ZTextDataColumnAttribute)attribute;
-                    Style elementStyle = new Style(typeof(TextBlock));
-                    elementStyle.Setters.Add(new Setter(TextBlock.VerticalAlignmentProperty, VerticalAlignment.Center));
-                    elementStyle.Setters.Add(new Setter(TextBlock.MarginProperty, new Thickness(6, 0, 6, 0)));
-                    DataGridTextColumn dataGridTextColumn = new DataGridTextColumn()
+                    DataGridTemplateColumn dataGridTemplateColumn = new DataGridTemplateColumn()
+                    { Header = zTextAttribute.Header, Width = zTextAttribute.Width };
+                    DataTemplate dataTemplate = new DataTemplate();
+                    FrameworkElementFactory cellFactory = new FrameworkElementFactory(typeof(DockPanel));
+
+                    FrameworkElementFactory textBox = new FrameworkElementFactory(typeof(TextBox));
+                    textBox.SetValue(TextBox.IsReadOnlyProperty, zTextAttribute.IsReadOnly);
+                    textBox.SetValue(TextBox.MarginProperty, new Thickness(5, 0, 5, 0));
+                    textBox.SetValue(VerticalContentAlignmentProperty, VerticalAlignment.Center);
+                    textBox.SetValue(TextBox.BorderThicknessProperty, new Thickness(0));
+                    textBox.SetBinding(TextBox.ForegroundProperty, new Binding());
+                    textBox.SetBinding(TextBox.BackgroundProperty, new Binding());
+                    textBox.SetBinding(TextBox.TextProperty, new Binding()
                     {
-                        Header = zTextAttribute.Header,
-                        IsReadOnly = zTextAttribute.IsReadOnly,
-                        Binding = new Binding()
-                        {
-                            Path = new PropertyPath(propertyInfo.Name),
-                            Mode = BindingMode.TwoWay,
-                            UpdateSourceTrigger = UpdateSourceTrigger.PropertyChanged
-                        },
-                        Width = zTextAttribute.Width,
-                        ElementStyle = elementStyle
-                    };
-                    dataGrid.Columns.Add(dataGridTextColumn);
+                        Path = new PropertyPath(propertyInfo.Name),
+                        Mode = BindingMode.TwoWay,
+                        UpdateSourceTrigger = UpdateSourceTrigger.PropertyChanged
+                    });
+                    
+                    cellFactory.AppendChild(textBox);
+
+                    dataTemplate.VisualTree = cellFactory;
+                    dataGridTemplateColumn.CellTemplate = dataTemplate;
+                    dataGrid.Columns.Add(dataGridTemplateColumn);
+
+
+                    //ZTextDataColumnAttribute zTextAttribute = (ZTextDataColumnAttribute)attribute;
+                    //Style elementStyle = new Style(typeof(TextBlock));
+                    //elementStyle.Setters.Add(new Setter(TextBlock.VerticalAlignmentProperty, VerticalAlignment.Center));
+                    //elementStyle.Setters.Add(new Setter(TextBlock.MarginProperty, new Thickness(6, 0, 6, 0)));
+                    //DataGridTextColumn dataGridTextColumn = new DataGridTextColumn()
+                    //{
+                    //    Header = zTextAttribute.Header,
+                    //    IsReadOnly = zTextAttribute.IsReadOnly,
+                    //    Binding = new Binding()
+                    //    {
+                    //        Path = new PropertyPath(propertyInfo.Name),
+                    //        Mode = BindingMode.TwoWay,
+                    //        UpdateSourceTrigger = UpdateSourceTrigger.PropertyChanged
+                    //    },
+                    //    Width = zTextAttribute.Width,
+                    //    ElementStyle = elementStyle
+                    //};
+                    //dataGrid.Columns.Add(dataGridTextColumn);
                 }
                 else if (attribute is ZCheckDataColumnAttribute)
                 {

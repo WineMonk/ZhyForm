@@ -397,17 +397,17 @@
                         <Grid>
                             <TextBlock
                                 x:Name="PART_TextMark"
-                                Margin="3,0,0,0"
+                                Margin="3,0,6,0"
                                 VerticalAlignment="Center"
                                 FontStyle="Italic"
                                 Foreground="{DynamicResource TextBox.TextMarkColor}"
                                 Opacity="0.6"
                                 Text="{TemplateBinding helper:TextBoxHelper.TextMark}"
-                                Visibility="Collapsed" />
+                                Visibility="Hidden" />
                             <ScrollViewer
                                 x:Name="PART_ContentHost"
-                                Focusable="false"
                                 Margin="3,0"
+                                Focusable="false"
                                 HorizontalScrollBarVisibility="Hidden"
                                 VerticalScrollBarVisibility="Hidden" />
                         </Grid>

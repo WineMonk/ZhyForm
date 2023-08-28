@@ -20,7 +20,7 @@
             <RowDefinition Height="auto" />
         </Grid.RowDefinitions>
         <DockPanel x:Name="dockPanelTop" LastChildFill="False">
-            <DockPanel x:Name="dockPanelSearch" Width="380">
+            <DockPanel x:Name="dockPanelSearch" MaxWidth="420">
                 <!--<Button
                     x:Name="buttonSearch"
                     Margin="1,2,1,2"
